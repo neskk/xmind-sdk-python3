@@ -121,13 +121,13 @@ MarkerId.weekSat         = 'week-sat'
 class MarkerRefsElement(WorkbookMixinElement):
     TAG_NAME = const.TAG_MARKERREFS
 
-    def __init__(self, node=None, ownerWorkbook=None):
+    def __init__(self, node, ownerWorkbook):
         super(MarkerRefsElement, self).__init__(node, ownerWorkbook)
 
 class MarkerRefElement(WorkbookMixinElement):
     TAG_NAME = const.TAG_MARKERREF
 
-    def __init__(self, node=None, ownerWorkbook=None):
+    def __init__(self, node, ownerWorkbook):
         super(MarkerRefElement, self).__init__(node, ownerWorkbook)
 
     def getMarkerId(self):

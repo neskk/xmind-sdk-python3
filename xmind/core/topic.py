@@ -42,7 +42,7 @@ def split_hyperlink(hyperlink):
 class TopicElement(WorkbookMixinElement):
     TAG_NAME = const.TAG_TOPIC
 
-    def __init__(self, node=None, ownerWorkbook=None):
+    def __init__(self, node, ownerWorkbook):
         super(TopicElement, self).__init__(node, ownerWorkbook)
 
         self.addIdAttribute(const.ATTR_ID)
@@ -167,7 +167,7 @@ class TopicElement(WorkbookMixinElement):
         position = self._get_position()
 
         if not position:
-            position = PositionElement(ownerWorkbook=ownerWorkbook)
+            position = PositionElement(None, ownerWorkbook)
             self.appendChild(position)
         else:
             position = PositionElement(position, ownerWorkbook)
@@ -228,31 +228,28 @@ class TopicElement(WorkbookMixinElement):
 
         return sub_topics[index]
 
-    def addSubTopic(self, topic=None, index=-1,
+    def addSubTopic(self, index=-1,
                     topics_type=const.TOPIC_ATTACHED):
         """
-        Add a sub topic to the current topic and return added sub topic
-
-        :param topic:   `TopicElement` object. If not `TopicElement` object
-                        passed then created new one automatically.
+        Create empty sub topic to the current topic and return added sub topic
         :param index:   if index not given then passed topic will append to
                         sub topics list. Otherwise, index must be less than
                         length of sub topics list and insert passed topic
                         before given index.
         """
         ownerWorkbook = self.getOwnerWorkbook()
-        topic = topic or self.__class__(None, ownerWorkbook)
+        topic = self.__class__(None, ownerWorkbook)
 
         topic_children = self._get_children()
         if not topic_children:
-            topic_children = ChildrenElement(ownerWorkbook=ownerWorkbook)
+            topic_children = ChildrenElement(None, ownerWorkbook)
             self.appendChild(topic_children)
         else:
             topic_children = ChildrenElement(topic_children, ownerWorkbook)
 
         topics = topic_children.getTopics(topics_type)
         if not topics:
-            topics = TopicsElement(ownerWorkbook=ownerWorkbook)
+            topics = TopicsElement(None, ownerWorkbook)
             topics.setAttribute(const.ATTR_TYPE, topics_type)
             topic_children.appendChild(topics)
 
@@ -359,7 +356,7 @@ class TopicElement(WorkbookMixinElement):
 class ChildrenElement(WorkbookMixinElement):
     TAG_NAME = const.TAG_CHILDREN
 
-    def __init__(self, node=None, ownerWorkbook=None):
+    def __init__(self, node, ownerWorkbook):
         super(ChildrenElement, self).__init__(node, ownerWorkbook)
 
     def getTopics(self, topics_type):
@@ -373,7 +370,7 @@ class ChildrenElement(WorkbookMixinElement):
 class TopicsElement(WorkbookMixinElement):
     TAG_NAME = const.TAG_TOPICS
 
-    def __init__(self, node=None, ownerWorkbook=None):
+    def __init__(self, node, ownerWorkbook):
         super(TopicsElement, self).__init__(node, ownerWorkbook)
 
     def getType(self):

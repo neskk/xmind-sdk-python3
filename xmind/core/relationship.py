@@ -22,7 +22,7 @@ from .title import TitleElement
 class RelationshipElement(WorkbookMixinElement):
     TAG_NAME = const.TAG_RELATIONSHIP
 
-    def __init__(self, node=None, ownerWorkbook=None):
+    def __init__(self, node, ownerWorkbook):
         super(RelationshipElement, self).__init__(node, ownerWorkbook)
 
         self.addIdAttribute(const.ATTR_ID)
@@ -84,7 +84,7 @@ class RelationshipElement(WorkbookMixinElement):
 class RelationshipsElement(WorkbookMixinElement):
     TAG_NAME = const.TAG_RELATIONSHIPS
 
-    def __init__(self, node=None, ownerWorkbook=None):
+    def __init__(self, node, ownerWorkbook):
         super(RelationshipsElement, self).__init__(node, ownerWorkbook)
 
 

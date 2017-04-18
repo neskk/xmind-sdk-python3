@@ -24,7 +24,7 @@ from .relationship import RelationshipElement, RelationshipsElement
 class SheetElement(WorkbookMixinElement):
     TAG_NAME = const.TAG_SHEET
 
-    def __init__(self, node=None, ownerWorkbook=None):
+    def __init__(self, node, ownerWorkbook):
         super(SheetElement, self).__init__(node, ownerWorkbook)
 
         self.addIdAttribute(const.ATTR_ID)
@@ -39,7 +39,7 @@ class SheetElement(WorkbookMixinElement):
             root_topic = topics[0]
             root_topic = TopicElement(root_topic, owner_workbook)
         else:
-            root_topic = TopicElement(ownerWorkbook=owner_workbook)
+            root_topic = TopicElement(None, owner_workbook)
             self.appendChild(root_topic)
 
         return root_topic
@@ -47,27 +47,29 @@ class SheetElement(WorkbookMixinElement):
     def createRelationship(self, end1, end2, title=None):
         """
         Create a relationship between two different topics and return the
-        created rel. Please notice that the created rel will not be added to
-        sheet. Call `addRelationship()` to add rel to sheet.
+        created rel. Please notice that the created rel will be added to
+        sheet.
 
         :param end1:    topic ID
         :param end2:    topic ID
         :param title:   relationship title, default by None
 
         """
-        rel = RelationshipElement(ownerWorkbook=self.getOwnerWorkbook())
+        rel = RelationshipElement(None, self.getOwnerWorkbook())
         rel.setEnd1ID(end1)
         rel.setEnd2ID(end2)
 
         if title is not None:
             rel.setTitle(title)
 
+        self._addRelationship(rel)
+
         return rel
 
     def _getRelationships(self):
         return self.getFirstChildNodeByTagName(const.TAG_RELATIONSHIPS)
 
-    def addRelationship(self, rel):
+    def _addRelationship(self, rel):
         """
         Add relationship to sheet
         """

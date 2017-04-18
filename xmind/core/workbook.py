@@ -29,7 +29,7 @@ from .. import utils
 class WorkbookElement(WorkbookMixinElement):
     TAG_NAME = const.TAG_WORKBOOK
 
-    def __init__(self, node=None, ownerWorkbook=None):
+    def __init__(self, node, ownerWorkbook):
         super(WorkbookElement, self).__init__(node, ownerWorkbook)
 
         # Initialize WorkbookElement with default attribute
@@ -147,28 +147,19 @@ class WorkbookDocument(Document):
     def getWorkbookElement(self):
         return self._workbook_element
 
-    def _create_relationship(self):
-        return RelationshipElement(None, self)
-
-    def createRelationship(self, end1, end2):
-        """ Create relationship with two topics. Pass two
-        `TopicElement` object and retuen `RelationshipElement` object
+    def createRelationship(self, end1, end2, title=None):
+        """ Create relationship with two topics. Convenience method
+            to access the sheet method of the same name
         """
+
         sheet1 = end1.getOwnerSheet()
         sheet2 = end2.getOwnerSheet()
 
-        if sheet1 and sheet2:
-            if sheet1.getImplementation() == sheet2.getImplementation():
-
-                rel = self._create_relationship()
-                rel.setEnd1ID(end1.getID())
-                rel.setEnd2ID(end2.getID())
-
-                sheet1.addRelationships(rel)
-
-                return rel
-
-        raise Exception("Topics not on the same sheet!")
+        if sheet1.getImplementation() == sheet2.getImplementation():
+            rel = sheet1.create_relationship(end1.getID(),end2.getID(),title)
+            return rel
+        else:
+            raise Exception("Topics not on the same sheet!")
 
     def createTopic(self):
         """
@@ -190,25 +181,18 @@ class WorkbookDocument(Document):
         """
         return self._workbook_element.getSheetByIndex(0)
 
-    def createSheet(self):
+    def createSheet(self, index=-1):
         """
-        Create new sheet. But please notice the new created sheet
-        hasn't been added to the workbook. Invoke :method addSheet: to do that.
-        """
-        return self._workbook_element.createSheet()
-
-    def addSheet(self, sheet, index=-1):
-        """
-        Add a sheet to the workbook.
-
-        :param sheet:   add passed `SheetElement` object to workbook.
-
+        Create new sheet. Please notice the new created sheet
+        has been added to the workbook.
         :param index:   insert sheet before another sheet that given by
                         index. If index not given, append sheet to the
                         sheets list.
         """
+        sheet =  self._workbook_element.createSheet()
         self._workbook_element.addSheet(sheet, index)
-
+        return sheet;
+        
     def removeSheet(self, sheet):
         """
         Remove a sheet from the workbook

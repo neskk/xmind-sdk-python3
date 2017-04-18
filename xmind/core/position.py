@@ -20,7 +20,7 @@ from .mixin import WorkbookMixinElement
 class PositionElement(WorkbookMixinElement):
     TAG_NAME = const.TAG_POSITION
 
-    def __init__(self, node=None, ownerWorkbook=None):
+    def __init__(self, node, ownerWorkbook):
         super(PositionElement, self).__init__(node, ownerWorkbook)
 
     # FIXME: These should be converted to getter/setters

@@ -21,7 +21,7 @@ from .. import utils
 class WorkbookMixinElement(Element):
     """
     """
-    def __init__(self, node=None, ownerWorkbook=None):
+    def __init__(self, node, ownerWorkbook):
         super(WorkbookMixinElement, self).__init__(node)
         self._owner_workbook = ownerWorkbook
         self.registOwnerWorkbook()

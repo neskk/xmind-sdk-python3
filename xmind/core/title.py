@@ -20,7 +20,7 @@ from .mixin import WorkbookMixinElement
 class TitleElement(WorkbookMixinElement):
     TAG_NAME = const.TAG_TITLE
 
-    def __init__(self, node=None, ownerWorkbook=None):
+    def __init__(self, node, ownerWorkbook):
         super(TitleElement, self).__init__(node, ownerWorkbook)
 
 
