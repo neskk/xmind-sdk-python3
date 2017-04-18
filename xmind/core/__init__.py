@@ -200,8 +200,7 @@ class Element(Node):
     def __init__(self, node=None):
         # FIXME: Should really call the base class
         #super(Element, self).__init__()
-        self._node = node or self._elementConstructor(
-            self.TAG_NAME.decode("utf8"))
+        self._node = node or self._elementConstructor(self.TAG_NAME)
 
     def _elementConstructor(self, tag_name,
                             namespaceURI=None,
@@ -257,8 +256,7 @@ class Element(Node):
         attribute will be removed.
         """
         if attr_value is not None:
-            self._node.setAttribute(attr_name,
-                                    str(attr_value).decode("utf8"))
+            self._node.setAttribute(attr_name,str(attr_value))
         elif self._node.hasAttribute(attr_name):
             self._node.removeAttribute(attr_name)
 
@@ -308,7 +306,7 @@ class Element(Node):
                 self._node.removeChild(node)
 
         text = DOM.Text()
-        text.data = data.decode("utf8")
+        text.data = data
 
         self._node.appendChild(text)
 
