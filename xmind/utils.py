@@ -67,7 +67,7 @@ def get_current_time():
     """
     Get the current time in milliseconds
     """
-    return long(round(time.time() * 1000))
+    return int(round(time.time() * 1000))
 
 
 def readable_time(timestamp):
