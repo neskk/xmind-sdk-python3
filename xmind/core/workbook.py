@@ -68,7 +68,7 @@ class WorkbookElement(WorkbookMixinElement):
         sheet = SheetElement(None, self.getOwnerWorkbook())
         return sheet
 
-    def addSheet(self, sheet, index=None):
+    def addSheet(self, sheet, index=-1):
         sheets = self.getSheets()
         if index < 0 or index >= len(sheets):
             self.appendChild(sheet)
@@ -197,7 +197,7 @@ class WorkbookDocument(Document):
         """
         return self._workbook_element.createSheet()
 
-    def addSheet(self, sheet, index=None):
+    def addSheet(self, sheet, index=-1):
         """
         Add a sheet to the workbook.
 
