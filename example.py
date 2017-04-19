@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 import xmind
 from xmind.core.const import TOPIC_DETACHED
+from xmind.core.markerref import MarkerId
 
 w = xmind.load("test.xmind") # load an existing file or create a new workbook if nothing is found
 
@@ -47,10 +48,20 @@ d1 = r2.addSubTopic(topics_type = TOPIC_DETACHED)
 d1.setTitle("detached topic")
 d1.setPosition(0,20)
 
-topics=r2.getSubTopics() # to loop on the subTopics
+# loop on the (attached) subTopics
+topics=r2.getSubTopics()
+# Demonstrate creating a marker
 for topic in topics:
-    topic.addMarker("yes")
+    topic.addMarker(MarkerId.starBlue)
 
-rel=s2.createRelationship(t1.getID(),t2.getID(),"test") # create a relationship
+# loop on the detached subTopics
+topics=r2.getSubTopics(topics_type = TOPIC_DETACHED)
+# Demonstrate creating a marker
+for topic in topics:
+    topic.addMarker("star-red") # You can also use a string here
+    
+# create a relationship    
+rel=s2.createRelationship(t1.getID(),t2.getID(),"test") 
 
-xmind.save(w,"test2.xmind") # and we save
+# and we save
+xmind.save(w,"test2.xmind") 

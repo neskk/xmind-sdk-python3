@@ -26,7 +26,7 @@ class MarkerId:
     def __repr__(self):
         return "<MarkerId: %s>" % self
 
-    def getFamilly(self):
+    def getFamily(self):
         return self.name.split('-')[0]
 
 
