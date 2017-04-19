@@ -35,9 +35,3 @@ def save(workbook, path=None):
     saver = WorkbookSaver(workbook)
     saver.save(path)
 
-
-def main():
-    pass
-
-if __name__ == '__main__':
-    main()

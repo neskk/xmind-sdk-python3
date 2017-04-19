@@ -71,10 +71,3 @@ class TopicMixinElement(Element):
             return
 
         return self._owner_topic.getOwnerWorkbook()
-
-
-def main():
-    pass
-
-if __name__ == "__main__":
-    main()

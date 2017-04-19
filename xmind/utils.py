@@ -152,9 +152,3 @@ def check(attr):
         return wrapper
     return decorator
 
-
-def main():
-    pass
-
-if __name__ == '__main__':
-    main()

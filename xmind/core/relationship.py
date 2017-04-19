@@ -87,9 +87,3 @@ class RelationshipsElement(WorkbookMixinElement):
     def __init__(self, node, ownerWorkbook):
         super(RelationshipsElement, self).__init__(node, ownerWorkbook)
 
-
-def main():
-    pass
-
-if __name__ == "__main__":
-    main()

@@ -55,9 +55,3 @@ class WorkbookLoader(object):
         workbook = WorkbookDocument(content, path)
         return workbook
 
-
-def main():
-    pass
-
-if __name__ == "__main__":
-    main()

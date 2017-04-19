@@ -136,11 +136,3 @@ class SheetElement(WorkbookMixinElement):
         workbook = self.getParent()
         if workbook:
             workbook.updateModifiedTime()
-
-
-def main():
-    pass
-
-
-if __name__ == '__main__':
-    main()

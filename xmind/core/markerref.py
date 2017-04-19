@@ -136,8 +136,3 @@ class MarkerRefElement(WorkbookMixinElement):
     def setMarkerId(self, val):
         self.setAttribute(const.ATTR_MARKERID, str(val))
 
-def main():
-    pass
-
-if __name__ == '__main__':
-    main()

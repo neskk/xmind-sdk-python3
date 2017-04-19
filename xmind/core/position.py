@@ -37,9 +37,3 @@ class PositionElement(WorkbookMixinElement):
     def setY(self, y):
         self.setAttribute(const.ATTR_Y, int(y))
 
-
-def main():
-    pass
-
-if __name__ == '__main__':
-    main()

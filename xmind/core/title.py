@@ -23,9 +23,3 @@ class TitleElement(WorkbookMixinElement):
     def __init__(self, node, ownerWorkbook):
         super(TitleElement, self).__init__(node, ownerWorkbook)
 
-
-def main():
-    pass
-
-if __name__ == '__main__':
-    main()

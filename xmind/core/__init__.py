@@ -303,10 +303,3 @@ class Element(Node):
         text.data = data
 
         self._node.appendChild(text)
-
-
-def main():
-    pass
-
-if __name__ == '__main__':
-    main()

@@ -57,9 +57,3 @@ class WorkbookSaver(object):
         f=utils.compress(path)
         f.write(content, const.CONTENT_XML)
 
-
-def main():
-    pass
-
-if __name__ == "__main__":
-    main()
