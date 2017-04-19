@@ -36,6 +36,11 @@ t3.setTitle("topic with \n notes")
 # Create a topic with a file hyperlink
 t4 = r2.addSubTopic()
 t4.setFileHyperlink("logo.jpeg") 
+t4.setTitle("topic with a file")
+
+# Create topic that is a subtopic of another topic
+t41 = t4.addSubTopic()
+t41.setTitle("a subtopic")
 
 # create a detached topic whose (invisible) parent is the root
 d1 = r2.addSubTopic(topics_type = TOPIC_DETACHED)
