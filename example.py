@@ -1,7 +1,5 @@
 #-*- coding: utf-8 -*-
 import xmind
-from xmind.core import workbook,saver
-from xmind.core.topic import TopicElement
 
 w = xmind.load("test.xmind") # load an existing file or create a new workbook if nothing is found
 
@@ -15,26 +13,28 @@ s2.setTitle("second sheet")
 r2=s2.getRootTopic()
 r2.setTitle("root node")
 
-# First (empty) topics must be created from the root element
+# Empty topics are created from the root element and then filled.
+# Examples:
 
+# Create a topic with a link to the first sheet given by s1.getID()
 t1 = r2.addSubTopic()
-t2 = r2.addSubTopic()
-t3 = r2.addSubTopic()
-t4 = r2.addSubTopic()
-
-# Then the topic attributes can be filled
-
-t1.setTopicHyperlink(s1.getID()) # set a link from this topic to the first sheet given by s1.getID()
+t1.setTopicHyperlink(s1.getID()) 
 t1.setTitle("redirection to the first sheet") # set its title
 
+# Create a topic with a hyperlink
+t2 = r2.addSubTopic()
 t2.setTitle("second node")
-t2.setURLHyperlink("https://xmind.net") # set an hyperlink
+t2.setURLHyperlink("https://xmind.net") 
 
+# Create a topic with notes
+t3 = r2.addSubTopic()
 t3.setTitle("third node")
-t3.setPlainNotes("notes for this topic") # set notes (F4 in XMind)
+t3.setPlainNotes("notes for this topic") 
 t3.setTitle("topic with \n notes")
 
-t4.setFileHyperlink("logo.jpeg") # set a file hyperlink
+# Create a topic with a file hyperlink
+t4 = r2.addSubTopic()
+t4.setFileHyperlink("logo.jpeg") 
 t4.setTitle("topic with a file")
 
 topics=r2.getSubTopics() # to loop on the subTopics
