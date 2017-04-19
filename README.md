@@ -1,16 +1,17 @@
-#XMind SDK for python
+#XMind SDK for python 3.x. This fork does not work with python 2.x
 
-**XMind SDK for python** to help Python developers to easily work with XMind files and build XMind extensions.
+**XMind SDK for python 3** to help Python developers to easily work with XMind files and build XMind extensions.
+(This fork is a port from python2 to python3 of https://github.com/xmindltd/xmind-sdk-python.git).
 
-##Install XMind SDK for python
+##Install XMind SDK for python 3 
 
 Clone the repository to a local working directory
 
-	git clone https://github.com/xmindltd/xmind-sdk-python.git
+	git clone https://github.com/jmoraleda/xmind-sdk-python.git
 	
 Now there will be a directory named `xmind-sdk-python` under the current directory. Change to the directory `xmind-sdk-python` and install **XMind SDK for python**.
 
-	python setup.py install
+	python3 setup.py install
 	
 *It is highly recommended to install __XMind SDK for python__ under an isolated python environment using [virtualenv](https://pypi.python.org/pypi/virtualenv)*
 
