@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 import xmind
+from xmind.core.const import TOPIC_DETACHED
 
 w = xmind.load("test.xmind") # load an existing file or create a new workbook if nothing is found
 
@@ -35,7 +36,11 @@ t3.setTitle("topic with \n notes")
 # Create a topic with a file hyperlink
 t4 = r2.addSubTopic()
 t4.setFileHyperlink("logo.jpeg") 
-t4.setTitle("topic with a file")
+
+# create a detached topic whose (invisible) parent is the root
+d1 = r2.addSubTopic(topics_type = TOPIC_DETACHED)
+d1.setTitle("detached topic")
+d1.setPosition(0,20)
 
 topics=r2.getSubTopics() # to loop on the subTopics
 for topic in topics:

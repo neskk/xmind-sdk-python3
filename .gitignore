@@ -1,4 +1,9 @@
-### /Users/monster/.gitignore-boilerplates/Python.gitignore
+# Backup files
+*~
+\#*\#
+
+# Generated sample
+test2.xmind
 
 *.py[cod]
 
