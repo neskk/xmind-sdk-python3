@@ -236,7 +236,7 @@ class TopicElement(WorkbookMixinElement):
                         sub topics list. Otherwise, index must be less than
                         length of sub topics list and insert passed topic
                         before given index.
-        @param topics_tipe TOPIC_ATTACHED or TOPI
+        @param topics_tipe TOPIC_ATTACHED or TOPIC_DETACHED
         """
         ownerWorkbook = self.getOwnerWorkbook()
         topic = self.__class__(None, ownerWorkbook)

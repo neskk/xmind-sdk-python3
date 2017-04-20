@@ -7,7 +7,7 @@
 
 Clone the repository to a local working directory
 
-	git clone https://github.com/jmoraleda/xmind-sdk-python.git
+	git clone https://github.com/jmoraleda/xmind-sdk-python3.git
 	
 Now there will be a directory named `xmind-sdk-python` under the current directory. Change to the directory `xmind-sdk-python` and install **XMind SDK for python**.
 
