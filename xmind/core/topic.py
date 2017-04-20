@@ -208,11 +208,11 @@ class TopicElement(WorkbookMixinElement):
 
     def getSubTopics(self, topics_type=const.TOPIC_ATTACHED):
         """ List all sub topics under current topic, If not sub topics,
-        return None.
+        return empty list.
         """
         topics = self.getTopics(topics_type)
         if not topics:
-            return
+            return []
 
         return topics.getSubTopics()
 
@@ -232,10 +232,11 @@ class TopicElement(WorkbookMixinElement):
                     topics_type=const.TOPIC_ATTACHED):
         """
         Create empty sub topic to the current topic and return added sub topic
-        :param index:   if index not given then passed topic will append to
+        @param index:   if index not given then passed topic will append to
                         sub topics list. Otherwise, index must be less than
                         length of sub topics list and insert passed topic
                         before given index.
+        @param topics_tipe TOPIC_ATTACHED or TOPI
         """
         ownerWorkbook = self.getOwnerWorkbook()
         topic = self.__class__(None, ownerWorkbook)
