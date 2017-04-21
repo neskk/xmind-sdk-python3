@@ -53,12 +53,6 @@ topics=r2.getSubTopics()
 # Demonstrate creating a marker
 for topic in topics:
     topic.addMarker(MarkerId.starBlue)
-
-# loop on the detached subTopics
-topics=r2.getSubTopics(topics_type = TOPIC_DETACHED)
-# Demonstrate creating a marker
-for topic in topics:
-    topic.addMarker("star-red") # You can also use a string here
     
 # create a relationship    
 rel=s2.createRelationship(t1.getID(),t2.getID(),"test") 

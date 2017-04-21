@@ -26,6 +26,12 @@ class MarkerId:
     def __repr__(self):
         return "<MarkerId: %s>" % self
 
+    def __eq__(self, other):
+        """Override the default Equals behavior"""
+        if isinstance(other, self.__class__):
+            return self.name == other.name
+        return False
+
     def getFamily(self):
         return self.name.split('-')[0]
 

@@ -108,13 +108,14 @@ class TopicElement(WorkbookMixinElement):
                 marker_list.append(MarkerRefElement(i, self.getOwnerWorkbook()))
         return marker_list
 
-    def addMarker(self, markerId):
-
-        if not markerId:
-            return None
-        if type(markerId) == str:
-            markerId = MarkerId(markerId)
-
+    def addMarker(self, markerId, replaceSameFamily = True):
+        '''
+        Adds a marker to this topic.
+        @param markerId a MarkerID object indicating the marker to add
+        @param replaceSameFamily. Whether an existing marker of the same
+               family should be replaced or added (this would allow more
+               than one marker of the same family).
+        '''
         refs = self._get_markerrefs()
         if not refs:
             tmp = MarkerRefsElement(None, self.getOwnerWorkbook())
@@ -122,11 +123,11 @@ class TopicElement(WorkbookMixinElement):
         else:
             tmp = MarkerRefsElement(refs, self.getOwnerWorkbook())
         markers = tmp.getChildNodesByTagName(const.TAG_MARKERREF)
-        if markers:
+        if markers and replaceSameFamily:
             for m in markers:
                 mre = MarkerRefElement(m, self.getOwnerWorkbook())
                 # look for a marker of same familly
-                if mre.getMarkerId().getFamilly() == markerId.getFamilly():
+                if mre.getMarkerId().getFamily() == markerId.getFamily():
                     mre.setMarkerId(markerId)
                     return mre
         # not found so let's append it
