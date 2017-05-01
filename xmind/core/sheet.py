@@ -50,14 +50,16 @@ class SheetElement(WorkbookMixinElement):
         created rel. Please notice that the created rel will be added to
         sheet.
 
-        :param end1:    topic ID
-        :param end2:    topic ID
+        :param end1:    topic or topic ID
+        :param end2:    topic or topic ID
         :param title:   relationship title, default by None
 
         """
         rel = RelationshipElement(None, self.getOwnerWorkbook())
-        rel.setEnd1ID(end1)
-        rel.setEnd2ID(end2)
+        
+        rel.setEnd1ID(end1 if isinstance(end1, str) else end1.getID())
+        rel.setEnd2ID(end2 if isinstance(end2, str) else end2.getID())
+
 
         if title is not None:
             rel.setTitle(title)
@@ -69,6 +71,16 @@ class SheetElement(WorkbookMixinElement):
     def _getRelationships(self):
         return self.getFirstChildNodeByTagName(const.TAG_RELATIONSHIPS)
 
+    def getRelationships(self):
+        """
+        Get list of relationships in this sheet
+        """
+        _rels = self._getRelationships()
+        if not _rels:
+            return []
+        owner_workbook = self.getOwnerWorkbook()
+        return RelationshipsElement(_rels, owner_workbook).getRelationships()
+    
     def _addRelationship(self, rel):
         """
         Add relationship to sheet

@@ -87,3 +87,16 @@ class RelationshipsElement(WorkbookMixinElement):
     def __init__(self, node, ownerWorkbook):
         super(RelationshipsElement, self).__init__(node, ownerWorkbook)
 
+    
+    def getRelationships(self):
+        """
+        List all relationships
+        """
+        relationships = []
+        ownerWorkbook = self.getOwnerWorkbook()
+        for t in self.getChildNodesByTagName(const.TAG_RELATIONSHIP):
+            relationships.append(TopicElement(t, ownerWorkbook))
+
+        return relationships
+
+
