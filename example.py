@@ -9,6 +9,7 @@ s1=w.getPrimarySheet() # get the first sheet
 s1.setTitle("first sheet") # set its title
 r1=s1.getRootTopic() # get the root topic of this sheet
 r1.setTitle("we don't care of this sheet") # set its title
+r1.setStructureClass("org.xmind.ui.logic.right") # set topic structure class
 
 s2=w.createSheet() # create a new sheet
 s2.setTitle("second sheet")
