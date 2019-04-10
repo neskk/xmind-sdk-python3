@@ -1,37 +1,47 @@
-#XMind SDK for python 3.x. This fork does not work with python 2.x
+# XMind SDK for Python 3
 
-**XMind SDK for python 3** to help Python developers to easily work with XMind files and build XMind extensions.
-(This fork is a port from python2 to python3 of https://github.com/xmindltd/xmind-sdk-python.git).
+[Download XMind 8](https://www.xmind.net/download/xmind8/)
+Allows creation, visualization and edition `.xmind` files.
 
-##Install XMind SDK for python 3 
+**XMind SDK for Python 3** to help Python developers to easily work with XMind files and build XMind extensions.
 
-Clone the repository to a local working directory
+**This fork does not work with python 2.x**
 
-	git clone https://github.com/jmoraleda/xmind-sdk-python3.git
-	
-Now there will be a directory named `xmind-sdk-python` under the current directory. Change to the directory `xmind-sdk-python` and install **XMind SDK for python**.
+This project is python3 fork from the original python2 repository: https://github.com/xmindltd/xmind-sdk-python.git
 
-	python3 setup.py install
-	
-*It is highly recommended to install __XMind SDK for python__ under an isolated python environment using [virtualenv](https://pypi.python.org/pypi/virtualenv)*
+## Install XMind SDK for Python 3
 
-##Usage
+Clone the repository to a local working directory:
+```
+$ git clone https://github.com/neskk/xmind-sdk-python3.git
+```
+Now there will be a directory named `xmind-sdk-python3` under the current directory.
 
-Open an existing XMind file or create a new XMind file and place it into a given path
+Change to the directory `xmind-sdk-python3` and run:
+```
+$ python3 setup.py install
+```
+*It is highly recommended to install __XMind SDK for Python3__ under an isolated python environment using [virtualenv](https://pypi.python.org/pypi/virtualenv)*
 
-	import xmind
-	workbook = xmind.load(/path/to/file/)  # Requires '.xmind' extension
-	
+## Usage
+
+Open an existing XMind file or create a new XMind file and place it into a given path:
+
+```
+import xmind
+workbook = xmind.load(/path/to/file/)  # Requires '.xmind' extension
+```
 Save XMind file to a path.
 If the path is not given then the API will save to the path set in the workbook
-
-	xmind.save(workbook)
-
+```
+xmind.save(workbook)
+```
 or:
-	
-	xmind.save(workbook, /save/file/to/path)
-	
-##LICENSE
+```
+xmind.save(workbook, /save/file/to/path)
+```
+
+## License
 
 The MIT License (MIT)
 
